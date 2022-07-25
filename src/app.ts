@@ -3,7 +3,7 @@ import axios from 'axios';
 const form = document.querySelector('form')!;
 const addressInput = document.querySelector('#address')! as HTMLInputElement;
 
-const GOOGLE_API_KEY = 'AIzaSyBlZrufv_sL6x8n9-UbFfmt52gVhWbHz58'
+// const GOOGLE_API_KEY;
 
 type GeocodingResponse = {
     result: {geometry: {location: {lat: number, lng: number}}}[]
@@ -24,7 +24,11 @@ function searchAddressHandler(event: Event) {
         const coordinates = response.data.result[0].geometry.location;
 
     })  
-    .catch(err => console.log(err))
+    .catch(err => {
+        alert(err.message)
+        console.log(err)
+    })
+
 }
 
 form?.addEventListener("submit", searchAddressHandler);
